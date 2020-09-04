@@ -9,5 +9,18 @@
 }
 
 .form-control-plaintext {
+  font-size: large !important;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: white !important;
+}
+
+.userlist {
+  margin-top: 10px;
+}
+
+.list-group {
+  max-height: 400px;
+  margin-bottom: 10px;
+  overflow:scroll;
+  -webkit-overflow-scrolling: touch;
 }
