@@ -4,7 +4,7 @@
   $password = 'GGPassword'; // password
   $database = 'db_greatgrade'; // database
 
-  // connecto to database
+  // connect to database
   $mysqli = new mysqli($host, $username, $password, $database);
 
   // error message in case connection fails
