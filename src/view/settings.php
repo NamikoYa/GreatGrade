@@ -11,13 +11,13 @@
           <!-- User Info -->
           <label for="firstname" class="col-sm-2 col-form-label">Firstname:</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="firstname" value="Firstname">
+            <input type="text" readonly class="form-control-plaintext" id="firstname" value="Donald">
           </div>
         </div>
         <div class="form-group row">
           <label for="lastname" class="col-sm-2 col-form-label">Lastname:</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="lastname" value="Lastname">
+            <input type="text" readonly class="form-control-plaintext" id="lastname" value="Duck">
           </div>
         </div>
         <!-- Access Group Info -->

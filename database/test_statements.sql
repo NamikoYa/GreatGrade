@@ -21,7 +21,7 @@ select u.firstname, u.lastname, s.subject, g.grade
   order by u.lastname;
 
 --tbl_users inner join all fk
-select g.name as usergroup, u.firstname, u.lastname, c.name as class
+select g.name as usergroup, u.firstname, u.lastname, u.username, c.name as class
   from tbl_users as u
   inner join tbl_usergroups as g on u.groupID = g.ID
   left join tbl_classes as c on u.classID = c.ID

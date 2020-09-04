@@ -1,6 +1,9 @@
 <?php
 
-class Board {
+class Stationboard {
+
+  // Konstante
+  const MYFILE = '../data/stationboard.json';
 
   //Get existing information from database
   static function load() : array { 
