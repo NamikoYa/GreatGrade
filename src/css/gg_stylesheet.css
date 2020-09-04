@@ -1,0 +1,13 @@
+.center_div{
+  padding: 5%;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.right_sided {
+  margin-left: 83%;
+}
+
+.form-control-plaintext {
+  color: white !important;
+}
