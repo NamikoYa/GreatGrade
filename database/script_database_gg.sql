@@ -17,6 +17,7 @@ use db_greatgrade;
 --
 create user 'GGUser'@'localhost' identified by 'GGPassword';
 grant select, update, insert, delete on db_greatgrade.* TO GGUser@'localhost';
+flush privileges;
 
 --
 -- table structures
@@ -45,6 +46,8 @@ create table tbl_users (
   ID int not null auto_increment,
   firstname varchar(40) not null,
   lastname varchar(40) not null,
+  username varchar(40) not null,
+  password varchar(255) not null,
   groupID int,
   classID int,
   primary key (ID),
@@ -94,22 +97,22 @@ insert into tbl_subjects values
 (null, 'History', 'humans being silly');
 
 insert into tbl_users values
-(null, 'Sara', 'Roth', 1, null),
-(null, 'Natascha', 'Wernli', 1, null),
-(null, 'Daniel', 'Brodbeck', 1, null),
-(null, 'Patty', 'Furniture', 2, null),
-(null, 'Toi', 'Story', 2, null),
-(null, 'Skye', 'Blue', 2, null),
-(null, 'Ester', 'La Vista', 2, null),
-(null, 'Cesar', 'Salad', 3, 1),
-(null, 'Peet', 'Zaa', 3, 1),
-(null, 'Fran', 'Tick', 3, 1),
-(null, 'Tess', 'Tickles', 3, 2),
-(null, 'Chris P.', 'Bacon', 3, 2),
-(null, 'Dustin', 'Trailblazer', 3, 2),
-(null, 'Donald', 'Duck', 3, 3),
-(null, 'Mickey', 'Mouse', 3, 3),
-(null, 'Uri', 'Nalisis', 3, 3);
+(null, 'Sara', 'Roth', 'sara.roth', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 1, null),
+(null, 'Natascha', 'Wernli', 'natascha.wernli', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 1, null),
+(null, 'Daniel', 'Brodbeck', 'daniel.brodbeck', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 1, null),
+(null, 'Patty', 'Furniture', 'patty.furniture', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
+(null, 'Toi', 'Story', 'toi.story', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
+(null, 'Skye', 'Blue', 'skye.blue', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
+(null, 'Ester', 'La Vista', 'ester.lavista', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
+(null, 'Cesar', 'Salad', 'cesar.salad', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 1),
+(null, 'Peet', 'Zaa', 'peet.zaa', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 1),
+(null, 'Fran', 'Tick', 'fran.tick', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 1),
+(null, 'Tess', 'Tickles', 'tess.tickles', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 2),
+(null, 'Chris P.', 'Bacon', 'chrisp.bacon', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 2),
+(null, 'Dustin', 'Trailblazer', 'dustin.trailblazer', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 2),
+(null, 'Donald', 'Duck', 'donald.duck', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 3),
+(null, 'Mickey', 'Mouse', 'mickey.mouse', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 3),
+(null, 'Uri', 'Nalisis', 'uri.nalisis', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 3);
 
 insert into tbl_lessons values
 (null, 1, 48, 4, 1),
