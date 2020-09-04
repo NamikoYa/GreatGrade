@@ -4,6 +4,12 @@
   width: 60%;
 }
 
+.links {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
 .right_sided {
   margin-left: 83%;
 }
