@@ -15,7 +15,7 @@
             <div class="user_card">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="./img/GreatGrade.png" class="d-inline-block align-top" alt="GreatGrade">
+                        <img src="../img/GreatGrade.png" class="d-inline-block align-top" alt="GreatGrade">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">
