@@ -166,7 +166,7 @@
           </form>
           <!-- TODO: create dynamic list, create <li> -->
           <div class="userlist">
-            <div class="list-group">
+            <div class="list_group">
               <a href="#" class="list-group-item list-group-item-action active">firstname.lastname</a>
               <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
               <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
