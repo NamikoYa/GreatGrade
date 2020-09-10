@@ -1,3 +1,10 @@
+<?php
+// TODO: Get from session file and/or database, unhash password
+$firstname = $lastname = $username = $password = '';
+$group = 0;
+// TODO: Make modals work
+?>
+
 <div class="wrapper settings">
 
   <!-- Page Content -->
@@ -11,13 +18,13 @@
           <!-- User Info -->
           <label for="firstname" class="col-sm-2 col-form-label">Firstname:</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="firstname" value="Donald">
+            <input type="text" readonly class="form-control-plaintext" id="firstname" value="<?=$firstname?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="lastname" class="col-sm-2 col-form-label">Lastname:</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="lastname" value="Duck">
+            <input type="text" readonly class="form-control-plaintext" id="lastname" value="<?=$lastname?>">
           </div>
         </div>
         <!-- Access Group Info -->
@@ -26,19 +33,19 @@
             <legend class="col-form-label col-sm-2 pt-0">Access Group</legend>
             <div class="col-sm-10">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" <?php if($group == 1) {echo 'checked';} else {echo 'disabled';}?>>
                 <label class="form-check-label" for="gridRadios1">
                   Student
                 </label>
               </div>
               <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" disabled>
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" <?php if($group == 2) {echo 'checked';} else {echo 'disabled';}?>>
                 <label class="form-check-label" for="gridRadios2">
                   Teacher
                 </label>
               </div>
               <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" <?php if($group == 3) {echo 'checked';} else {echo 'disabled';}?>>
                 <label class="form-check-label" for="gridRadios3">
                   Administrator
                 </label>
@@ -49,11 +56,11 @@
         <!-- Account Info -->
         <div class="form-group">
           <label for="profileusername">Username</label>
-          <input disabled type="text" class="form-control" id="profileusername" value="firstname.lastname">
+          <input disabled type="text" class="form-control" id="profileusername" value="<?=$username?>">
         </div>
         <div class="form-group">
           <label for="profilepassword">Password</label>
-          <input disabled type="password" class="form-control" id="profilepassword" value="password">
+          <input disabled type="password" class="form-control" id="profilepassword" value="<?=$password?>">
         </div>
         <div class="right_sided">
           <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#changepassword">
