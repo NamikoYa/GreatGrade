@@ -7,8 +7,8 @@
       <hr class="my-4">
       <p class="lead">Visit your pages:</p>
       <p class="lead">
-        <a class="btn btn-success btn-lg" href="?view=overview" role="button">Overview - Grades & Content</a>
-        <a class="btn btn-dark btn-lg" href="?view=settings" role="button">Settings - Profile & Customization</a>
+        <a class="btn btn-success btn-lg" href="?view=overview" role="button">Grades & Content</a>
+        <a class="btn btn-dark btn-lg" href="?view=settings" role="button">Profile & Customization</a>
       </p>
     </div>
 
