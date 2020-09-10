@@ -1,12 +1,28 @@
-<?php 
+<?php
+
+// Start session
+session_start();
+session_regenerate_id(true);
+$_SESSION['loggedin'] = true;
+
 // Display errors
 ini_set('display_errors', true);
 
 // Include controller
 include '../controller.php';
 
-// Include database connection
-include '../db_connector.php';
+// Why does it not work?
+if(isset($_SESSION['loggedin'])) {
+  $view = 'home';
+  // Include database connection
+  include '../db_connector.php';
+  // TODO: Get from session file and/or database, unhash password
+  $firstname = $lastname = $username = $password = '';
+  $group = 0;
+} else {
+  $view = 'error';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -38,12 +54,14 @@ include '../db_connector.php';
   <?php 
   // display view according view-parameter
   switch ($view) {
+    case 'home':
+      include '../view/home.php'; break;
     case 'overview':
       include '../view/overview.php'; break;
     case 'settings':
       include '../view/settings.php'; break;
     default:
-      include '../view/home.php'; break;
+      include '../view/error.php'; break;
   }
   ?>
 
