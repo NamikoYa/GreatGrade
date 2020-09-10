@@ -9,9 +9,4 @@ if (isset($_POST['conf'])) {
   $view = 'home';
 }
 
-//Change view, get and validate information
-if (isset($_POST['save'])) {
-
-}
-
 ?>
