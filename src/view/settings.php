@@ -1,7 +1,4 @@
 <?php
-// TODO: Get from session file and/or database, unhash password
-$firstname = $lastname = $username = $password = '';
-$group = 0;
 // TODO: Make modals work
 ?>
 

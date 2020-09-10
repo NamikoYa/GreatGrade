@@ -15,7 +15,7 @@ $subject = '';
         <!-- Select options for subject -->
         <label class="mr-sm-2" for="inlineFormCustomSelect">Subject</label>
         <select name="subjectSelect" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-          <option disabled>Choose...</option>
+          <option selected disabled>Choose...</option>
           <!-- Get subject options from database -->
           <?php
           $query = "SELECT * FROM tbl_subjects";
