@@ -1,8 +1,14 @@
+<?php
+// TODO: Get from session file and/or database
+$firstname = $lastname = '';
+?>
+
 <div class="wrapper home">
+  <!-- Page Content -->
   <div class="center_div">
+    <!-- Welcome -->
     <div class="jumbotron">
-      <!-- TODO: Welcome Firstname Lastname, dynamically -->
-      <h1 class="display-4">Welcome Donald Duck!</h1>
+      <h1 class="display-4">Welcome <?=$firstname?> <?=$lastname?>!</h1>
       <p class="lead">This is a simple application for administering and viewing grades and content.</p>
       <hr class="my-4">
       <p class="lead">Visit your pages:</p>
@@ -12,6 +18,7 @@
       </p>
     </div>
 
+    <!-- Guide -->
     <div class="jumbotron">
       <h3>New here?</h3>
       <p class="lead">
