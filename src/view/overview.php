@@ -1,6 +1,7 @@
 <?php
 // TODO: How to change variable in select option? Changes dynamically already -> do not change
 $subject = '';
+// TODO: If accessgroup = teacher OR admin, add td to table with edit button -> add modal with entry field for grade and functional sql query
 ?>
 
 <div class="wrapper overview">
@@ -11,7 +12,7 @@ $subject = '';
     <div class="card text-white bg-dark mb-3">
       <h5 class="card-header">Grade Overview</h5>
       <div class="card-body">
-        <!-- Select for subject -->
+        <!-- Select options for subject -->
         <label class="mr-sm-2" for="inlineFormCustomSelect">Subject</label>
         <select name="subjectSelect" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
           <option disabled>Choose...</option>
@@ -31,10 +32,11 @@ $subject = '';
           ?>
         </select>
         <hr class="my-4 bg-light">
-        <table class="table table-dark">
+        
+        <!-- Table with grades -->
+        <table class="table table-hover table-dark">
           <caption>List of grades</caption>
           <thead>
-            <!-- TODO: Teacher can edit according to subject, can view everything -->
             <tr>
               <th scope="col">#</th>
               <th scope="col">First</th>
