@@ -1,7 +1,8 @@
 <?php
 // TODO: How to change variable in select option? Changes dynamically already -> do not change
-$subject = '';
+$subject = 'History';
 // TODO: If accessgroup = teacher OR admin, add td to table with edit button -> add modal with entry field for grade and functional sql query
+// https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=table-with-add-and-delete-row-feature
 ?>
 
 <div class="wrapper overview">
@@ -47,7 +48,7 @@ $subject = '';
           <tbody>
             <?php
             if($subject != '') {
-              $query = "SELECT u.firstname, u.lastname, s.subject, g.grade FROM tbl_grades as g INNER JOIN tbl_users as u on g.studentID = u.ID INNER JOIN tbl_subjects as s on g.subjectID = s.ID where s.subject = ? order by u.lastname";
+              $query = "SELECT u.firstname, u.lastname, u.username, s.subject, g.grade FROM tbl_grades as g INNER JOIN tbl_users as u on g.studentID = u.ID INNER JOIN tbl_subjects as s on g.subjectID = s.ID where s.subject = ? order by u.lastname";
               $stmt = $mysqli->prepare($query);
               $stmt->bind_param("s", $subject);
               $stmt->execute();
@@ -65,6 +66,7 @@ $subject = '';
                   echo '<td>' . $row['firstname'] . '</td>';
                   echo '<td>' . $row['lastname'] . '</td>';
                   echo '<td>' . $row['grade'] . '</td>';
+                  if($group == 1 || $group == 2) echo '<td style="width: 80px;"><button id="edit" style="padding-top: 2px; height: 25px; font-size: 10pt;" type="button" class="btn btn-light">Edit</button></td>';
                   echo '</tr>';
                   $count++;
                 }
