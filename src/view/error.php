@@ -1,6 +1,6 @@
 <?php
 // TODO: Destroy session if exists
-session_destroy();
+// session_destroy();
 ?>
 
 <div class="wrapper home">
