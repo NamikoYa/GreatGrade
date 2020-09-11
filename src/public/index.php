@@ -1,9 +1,9 @@
 <?php
 
 // Start session
-session_start();
+/* session_start();
 session_regenerate_id(true);
-$_SESSION['loggedin'] = true;
+$_SESSION['loggedin'] = true; */
 
 // Display errors
 ini_set('display_errors', true);
@@ -12,16 +12,19 @@ ini_set('display_errors', true);
 include '../controller.php';
 
 // Why does it not work?
-if(isset($_SESSION['loggedin'])) {
-  $view = 'home';
+/* if(isset($_SESSION['loggedin'])) {
+  $view = 'home'; */
   // Include database connection
   include '../db_connector.php';
   // TODO: Get from session file and/or database, unhash password
-  $firstname = $lastname = $username = $password = '';
-  $group = 0;
-} else {
+  $firstname = 'Amanda';
+  $lastname = 'Kerosiy';
+  $username = 'amanda.kerosiy';
+  $password = 'Pass123';
+  $group = 2;
+/* } else {
   $view = 'error';
-}
+} */
 
 ?>
 
@@ -61,7 +64,8 @@ if(isset($_SESSION['loggedin'])) {
     case 'settings':
       include '../view/settings.php'; break;
     default:
-      include '../view/error.php'; break;
+    //error.php
+      include '../view/home.php'; break;
   }
   ?>
 
@@ -69,6 +73,7 @@ if(isset($_SESSION['loggedin'])) {
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="../js/myscript.js"></script>
 
 </body>
 
