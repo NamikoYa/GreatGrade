@@ -30,7 +30,7 @@
             <legend class="col-form-label col-sm-2 pt-0">Access Group</legend>
             <div class="col-sm-10">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" <?php if($group == 1) {echo 'checked';} else {echo 'disabled';}?>>
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" <?php if($group == 3) {echo 'checked';} else {echo 'disabled';}?>>
                 <label class="form-check-label" for="gridRadios1">
                   Student
                 </label>
@@ -42,7 +42,7 @@
                 </label>
               </div>
               <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" <?php if($group == 3) {echo 'checked';} else {echo 'disabled';}?>>
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" <?php if($group == 1) {echo 'checked';} else {echo 'disabled';}?>>
                 <label class="form-check-label" for="gridRadios3">
                   Administrator
                 </label>
