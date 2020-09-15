@@ -21,7 +21,7 @@ include '../controller.php';
   $lastname = 'Kerosiy';
   $username = 'amanda.kerosiy';
   $password = 'Pass123';
-  $group = 2;
+  $group = 3;
 /* } else {
   $view = 'error';
 } */

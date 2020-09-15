@@ -1,6 +1,6 @@
 <?php
 // TODO: How to change variable in select option? Changes dynamically already -> do not change
-$subject = 'History';
+$subject = '';
 // TODO: If accessgroup = teacher OR admin, add td to table with edit button -> add modal with entry field for grade and functional sql query
 // https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=table-with-add-and-delete-row-feature
 ?>
