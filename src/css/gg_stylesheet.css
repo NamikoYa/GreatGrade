@@ -16,7 +16,7 @@ body, html {
   background-size: cover;
 }
 
-.center_div{
+.center-div{
   padding: 5%;
   margin: 0 auto;
   width: 60%;
@@ -28,8 +28,9 @@ body, html {
   font-weight: bold;
 }
 
-.right_sided {
-  margin-left: 83%;
+.right-sided {
+  position: relative;
+  float: right;
 }
 
 .form-control-plaintext {
@@ -38,18 +39,18 @@ body, html {
   color: white !important;
 }
 
-.userlist {
+.user-list {
   margin-top: 10px;
 }
 
-.list_group {
+.list-group {
   max-height: 400px;
   margin-bottom: 10px;
   overflow:scroll;
   -webkit-overflow-scrolling: touch;
 }
 
-.user_login {
+.user-login {
   background-color: white;
   padding: 5%;
   border-radius: 12px;

@@ -5,7 +5,7 @@
 <div class="wrapper settings">
 
   <!-- Page Content -->
-  <div class="center_div">
+  <div class="center-div">
 
     <!-- Profile Panel -->
     <div class="card text-white bg-dark mb-3">
@@ -59,7 +59,7 @@
           <label for="profilepassword">Password</label>
           <input disabled type="password" class="form-control" id="profilepassword" value="<?=$password?>">
         </div>
-        <div class="right_sided">
+        <div class="right-sided">
           <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#changepassword">
             Change Password
           </button>
@@ -170,7 +170,7 @@
           </form>
           <!-- TODO: create dynamic list, create <li> -->
           <div class="userlist">
-            <div class="list_group">
+            <div class="list-group">
               <a href="#" class="list-group-item list-group-item-action active">firstname.lastname</a>
               <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
               <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>

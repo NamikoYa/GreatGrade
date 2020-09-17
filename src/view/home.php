@@ -2,7 +2,7 @@
 
 <div class="wrapper home">
   <!-- Page Content -->
-  <div class="center_div">
+  <div class="center-div">
     <!-- Welcome -->
     <div class="jumbotron">
       <h1 class="display-4">Welcome <?=$firstname?> <?=$lastname?>!</h1>

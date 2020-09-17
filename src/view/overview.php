@@ -6,7 +6,7 @@ $subject = '';
 
 <div class="wrapper overview">
 
-  <div class="center_div">
+  <div class="center-div">
 
     <!-- Grades Panel -->
     <div class="card text-white bg-dark mb-3">

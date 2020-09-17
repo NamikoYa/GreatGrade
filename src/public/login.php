@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <body>
     <div class="background">
-        <div class="user_login">
+        <div class="user-login">
         <?php
                 // print error or message
                 if(!empty($message)){

@@ -7,7 +7,7 @@ if(isset($_SESSION['loggedin'])) {
 
 <div class="wrapper home">
   <!-- Page Content -->
-  <div class="center_div">
+  <div class="center-div">
     <!-- Error Message -->
     <div class="jumbotron">
       <h1 class="display-4">Oups, something went wrong.</h1>
