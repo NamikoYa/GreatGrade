@@ -1,7 +1,7 @@
 <?php
 // TODO: How to change variable in select option? Changes dynamically already -> do not change
 $subject = '';
-// TODO: edit buttons -> ask brodbeck!
+// TODO: edit buttons -> make work
 ?>
 
 <div class="wrapper overview">

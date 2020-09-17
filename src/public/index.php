@@ -1,20 +1,20 @@
 <?php
 
-// Start session
+// start session
 session_start();
 
-// Display errors
+// display errors
 ini_set('display_errors', true);
 
-// Include controller
+// include controller
 include '../controller.php';
-// Include database connection
+// include database connection
 include '../db_connector.php';
 
-// Initialize variables
+// initialize variables
 $firstname = $lastname = $username = $password = $group = '';
 
-// Get Data and fill variables
+// get data and fill variables
 if(isset($_SESSION['loggedin'])) {
   $username = $_SESSION['username'];
   try {
@@ -74,7 +74,7 @@ if(isset($_SESSION['loggedin'])) {
   </nav>
 
   <?php 
-  // Display view according view-parameter
+  // display view according view-parameter
   switch ($view) {
     case 'home':
       include '../view/home.php'; break;
