@@ -1,6 +1,8 @@
 <?php
-// TODO: Destroy session if exists
-// session_destroy();
+if(isset($_SESSION['loggedin'])) {
+  session_unset();
+  session_destroy();
+}
 ?>
 
 <div class="wrapper home">
