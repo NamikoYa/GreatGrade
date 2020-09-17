@@ -169,21 +169,27 @@
             <button class="btn btn btn-dark my-2 my-sm-0 col-lg-2" type="button"><i class="fa fa-search"></i></button>
           </form>
           <!-- TODO: create dynamic list, create <li> -->
-          <div class="userlist">
+          <div class="user-list">
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action active">firstname.lastname</a>
-              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+              <?php
+              try {
+                $query = "SELECT username FROM tbl_users";
+                $stmt = $mysqli->prepare($query);
+                $stmt->execute();
+                $result=$stmt->get_result();
+              } catch(Exeption $e) {
+                error_log($e->getMessage());
+                $view = 'error';
+              }
+              if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+                  echo '<a href="#" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
+                }
+              } else {
+                $view = 'error';
+              }
+              $result->free();
+              ?>
             </div>
           </div>
         </div>
@@ -209,21 +215,27 @@
             <button class="btn btn btn-dark my-2 my-sm-0 col-lg-2" type="button"><i class="fa fa-search"></i></button>
           </form>
           <!-- TODO: create dynamic list, create <li> -->
-          <div class="userlist">
+          <div class="user-list">
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action active">firstname.lastname</a>
-              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+              <?php
+                try {
+                  $query = "SELECT username FROM tbl_users";
+                  $stmt = $mysqli->prepare($query);
+                  $stmt->execute();
+                  $result=$stmt->get_result();
+                } catch(Exeption $e) {
+                  error_log($e->getMessage());
+                  $view = 'error';
+                }
+                if($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()){
+                    echo '<a href="" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
+                  }
+                } else {
+                  $view = 'error';
+                }
+                $result->free();
+              ?>
             </div>
           </div>
         </div>
