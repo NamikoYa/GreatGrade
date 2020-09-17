@@ -1,30 +1,47 @@
 <?php
 
 // Start session
-/* session_start();
-session_regenerate_id(true);
-$_SESSION['loggedin'] = true; */
+session_start();
 
 // Display errors
 ini_set('display_errors', true);
 
 // Include controller
 include '../controller.php';
+// Include database connection
+include '../db_connector.php';
+
+//Initialize variables
+$firstname = $lastname = $username = $password = $group = '';
 
 // Why does it not work?
-/* if(isset($_SESSION['loggedin'])) {
-  $view = 'home'; */
-  // Include database connection
-  include '../db_connector.php';
-  // TODO: Get from session file and/or database, unhash password
-  $firstname = 'Amanda';
-  $lastname = 'Kerosiy';
-  $username = 'amanda.kerosiy';
-  $password = 'Pass123';
-  $group = 3;
-/* } else {
+if(isset($_SESSION['loggedin'])) {
+  $username = $_SESSION['username'];
+  try {
+    $query = "SELECT firstname, lastname, username, password, groupID FROM tbl_users WHERE username = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $result=$stmt->get_result();
+  } catch(Exeption $e) {
+    error_log($e->getMessage());
+    $view = 'error';
+  }
+  // TODO: Check if no error
+  if($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()){
+      $firstname = $row['firstname'];
+      $lastname = $row['lastname'];
+      $password = $_SESSION['password'];
+      $group = $row['groupID'];
+    }
+  } else {
+    $view = 'error';
+  }
+  $result->free();
+} else {
   $view = 'error';
-} */
+}
 
 ?>
 
@@ -51,6 +68,9 @@ include '../controller.php';
         <a href="?view=overview" class="nav-item nav-link <?php if($view == 'overview') { echo 'active'; } ?>">Overview</a>
         <a href="?view=settings" class="nav-item nav-link <?php if($view == 'settings') { echo 'active'; } ?>">My Settings</a>
       </div>
+      <div class="navbar-nav ml-auto">
+        <a href="./login.php" class="nav-item nav-link">Log out</a>
+      </div>
     </div>
   </nav>
 
@@ -65,7 +85,7 @@ include '../controller.php';
       include '../view/settings.php'; break;
     default:
     //error.php
-      include '../view/home.php'; break;
+      include '../view/error.php'; break;
   }
   ?>
 
