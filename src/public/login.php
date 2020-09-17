@@ -2,7 +2,10 @@
 
 //Session starten
 session_start();
-session_regenerate_id(true);
+if(isset($_SESSION['loggedin'])) {
+    session_unset();
+    session_destroy();
+}
 
 // Include database connection
 include '../db_connector.php';
@@ -56,11 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			// TODO Passwort auslesen und mit dem eingegeben Passwort vergleichen
 			if (password_verify($password, $row['password'])) {
 				
-				//Variablen setzten
+                //Variablen setzten
+                session_start();
 				$_SESSION['loggedin'] = true;
-				$_SESSION['username'] = $row['username'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['password'] = $password;
+                session_regenerate_id(true);
 
-				header("Location: index.php");
+				header("Location: ./index.php?view=home");
 			// TODO: wenn Passwort korrekt:  $message .= "Sie sind nun eingeloggt"; 
 			//$message .= "Sie haben sich erfolgreich eingeloggt!";
 
