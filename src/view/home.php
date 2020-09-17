@@ -1,7 +1,4 @@
-<?php
-// TODO: Get from session file and/or database
-$firstname = $lastname = '';
-?>
+<?php?>
 
 <div class="wrapper home">
   <!-- Page Content -->
