@@ -11,10 +11,10 @@ include '../controller.php';
 // Include database connection
 include '../db_connector.php';
 
-//Initialize variables
+// Initialize variables
 $firstname = $lastname = $username = $password = $group = '';
 
-// Why does it not work?
+// Get Data and fill variables
 if(isset($_SESSION['loggedin'])) {
   $username = $_SESSION['username'];
   try {
@@ -27,7 +27,6 @@ if(isset($_SESSION['loggedin'])) {
     error_log($e->getMessage());
     $view = 'error';
   }
-  // TODO: Check if no error
   if($result->num_rows > 0) {
     while($row = $result->fetch_assoc()){
       $firstname = $row['firstname'];
@@ -75,7 +74,7 @@ if(isset($_SESSION['loggedin'])) {
   </nav>
 
   <?php 
-  // display view according view-parameter
+  // Display view according view-parameter
   switch ($view) {
     case 'home':
       include '../view/home.php'; break;
@@ -84,7 +83,6 @@ if(isset($_SESSION['loggedin'])) {
     case 'settings':
       include '../view/settings.php'; break;
     default:
-    //error.php
       include '../view/error.php'; break;
   }
   ?>

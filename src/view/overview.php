@@ -1,8 +1,7 @@
 <?php
 // TODO: How to change variable in select option? Changes dynamically already -> do not change
 $subject = '';
-// TODO: If accessgroup = teacher OR admin, add td to table with edit button -> add modal with entry field for grade and functional sql query
-// https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=table-with-add-and-delete-row-feature
+// TODO: edit buttons -> ask brodbeck!
 ?>
 
 <div class="wrapper overview">
@@ -66,6 +65,7 @@ $subject = '';
                   echo '<td>' . $row['firstname'] . '</td>';
                   echo '<td>' . $row['lastname'] . '</td>';
                   echo '<td>' . $row['grade'] . '</td>';
+                  // TODO: clean up
                   if($group == 1 || $group == 2) echo '<td style="width: 80px;"><button id="edit" style="padding-top: 2px; height: 25px; font-size: 10pt;" type="button" class="btn btn-light">Edit</button></td>';
                   echo '</tr>';
                   $count++;
