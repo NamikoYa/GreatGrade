@@ -1,7 +1,13 @@
 <?php
-// TODO: How to change variable in select option? Changes dynamically already -> do not change
+// initialize variables
 $subject = '';
+
+// change of select option
+if(isset($_POST['btn_view'])) {
+  $subject = $_POST['subjectValue'];
+}
 // TODO: edit buttons -> make work
+// TODO: select differen -> ask brodbeck
 ?>
 
 <div class="wrapper overview">
@@ -13,24 +19,32 @@ $subject = '';
       <h5 class="card-header">Grade Overview</h5>
       <div class="card-body">
         <!-- Select options for subject -->
-        <label class="mr-sm-2" for="inlineFormCustomSelect">Subject</label>
-        <select name="subjectSelect" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-          <option selected disabled>Choose...</option>
-          <!-- Get subject options from database -->
-          <?php
-          $query = "SELECT * FROM tbl_subjects";
-          $stmt = $mysqli->prepare($query);
-          $stmt->execute();
-          $result=$stmt->get_result();
-          
-          if($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()){
-              echo '<option>' . $row['subject'] . '</option>';
-            }
-          }
-          $result->free();
-          ?>
-        </select>
+        <form method="post">
+          <div class="input-group">
+            <select class="custom-select" name="subjectValue">
+              <option <?php if($subject == '') echo 'selected'; ?> disabled>Subject</option>
+              <!-- Get subject options from database -->
+              <?php
+              $query = "SELECT * FROM tbl_subjects";
+              $stmt = $mysqli->prepare($query);
+              $stmt->execute();
+              $result=$stmt->get_result();
+              
+              if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+              ?>
+              <option <?php if($subject == $row['subject']) echo 'selected'; ?>><?php echo $row['subject']?></option>
+              <?php
+                }
+              }
+              $result->free();
+              ?>
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-success" type="submit" name="btn_view">View</button>
+            </div>
+          </div>
+        </form>
         <hr class="my-4 bg-light">
         
         <!-- Table with grades -->
@@ -46,10 +60,14 @@ $subject = '';
           </thead>
           <tbody>
             <?php
+            // fill table with data, students can only see their own class
             if($subject != '') {
-              $query = "SELECT u.firstname, u.lastname, u.username, s.subject, g.grade FROM tbl_grades as g INNER JOIN tbl_users as u on g.studentID = u.ID INNER JOIN tbl_subjects as s on g.subjectID = s.ID where s.subject = ? order by u.lastname";
+              $query = '';
+              if($group != 3) $query = "SELECT u.firstname, u.lastname, u.username, s.subject, g.grade FROM tbl_grades as g INNER JOIN tbl_users as u on g.studentID = u.ID INNER JOIN tbl_subjects as s on g.subjectID = s.ID where s.subject = ? order by u.lastname";
+              else $query = "SELECT u.firstname, u.lastname, u.username, s.subject, g.grade FROM tbl_grades as g INNER JOIN tbl_users as u on g.studentID = u.ID INNER JOIN tbl_subjects as s on g.subjectID = s.ID where s.subject = ? and classID = ? order by u.lastname";
               $stmt = $mysqli->prepare($query);
-              $stmt->bind_param("s", $subject);
+              if($group != 3) $stmt->bind_param("s", $subject);
+              else $stmt->bind_param("ss", $subject, $class);
               $stmt->execute();
               $result=$stmt->get_result();
 
@@ -66,7 +84,9 @@ $subject = '';
                   echo '<td>' . $row['lastname'] . '</td>';
                   echo '<td>' . $row['grade'] . '</td>';
                   // TODO: clean up
-                  if($group == 1 || $group == 2) echo '<td style="width: 80px;"><button id="edit" style="padding-top: 2px; height: 25px; font-size: 10pt;" type="button" class="btn btn-light">Edit</button></td>';
+                  if($group == 1 || $group == 2) {
+                    echo '<td style="width: 80px;"><button id="edit" style="padding-top: 2px; height: 25px; font-size: 10pt;" type="button" class="btn btn-light">Edit</button></td>';
+                  }
                   echo '</tr>';
                   $count++;
                 }
