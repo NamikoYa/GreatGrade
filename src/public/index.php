@@ -1,4 +1,11 @@
 <?php
+/* TODO: 
+cleanup 
+-> comments english and starting small
+-> local variables start with lv_
+-> words in classes and variables are seperated with _
+-> remove unnessecary classes, ids etc
+*/
 
 // start session
 session_start();
@@ -12,13 +19,13 @@ include '../controller.php';
 include '../db_connector.php';
 
 // initialize variables
-$firstname = $lastname = $username = $password = $group = '';
+$firstname = $lastname = $username = $password = $group = $class = '';
 
 // get data and fill variables
 if(isset($_SESSION['loggedin'])) {
   $username = $_SESSION['username'];
   try {
-    $query = "SELECT firstname, lastname, username, password, groupID FROM tbl_users WHERE username = ?";
+    $query = "SELECT firstname, lastname, username, password, groupID, classID FROM tbl_users WHERE username = ?";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -33,6 +40,7 @@ if(isset($_SESSION['loggedin'])) {
       $lastname = $row['lastname'];
       $password = $_SESSION['password'];
       $group = $row['groupID'];
+      $class = $row['classID'];
     }
   } else {
     $view = 'error';
