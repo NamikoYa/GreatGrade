@@ -7,6 +7,7 @@ cleanup
 -> remove unnessecary classes, ids etc
 -> get data in model
 -> think about folder structure (php, what belongs into index?)
+-> conform php writing (especially $query parts)
 */
 
 // start session

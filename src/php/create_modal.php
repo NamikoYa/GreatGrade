@@ -16,7 +16,7 @@ if(isset($_POST['create-user'])) {
   if(empty($lv_first) || empty($lv_last) || empty($lv_user) || empty($lv_pass) || $lv_usergroup == 'Choose...'|| $lv_userclass == 'Choose...') {
     $error = 'Could not create new user.';
   }
-  // if no error, save new password in database
+  // if no error, create user
   if(empty($error)) {
     try {
       $query = 'INSERT INTO tbl_users VALUES (NULL, ?, ?, ?, ?, ?, ?)';
