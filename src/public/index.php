@@ -5,6 +5,8 @@ cleanup
 -> local variables start with lv_
 -> words in classes and variables are seperated with _
 -> remove unnessecary classes, ids etc
+-> get data in model
+-> think about folder structure (php, what belongs into index?)
 */
 
 // start session
