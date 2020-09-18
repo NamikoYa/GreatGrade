@@ -1,6 +1,6 @@
 <?php
 // TODO: Make modals work
-// TODO: Cannot change password twice immediately, must reload?
+// TODO: Cannot make changes with modals twice immediately, must reload?
 
 // initialize variables
 $error = $message = '';
@@ -84,23 +84,25 @@ include '../php/create_modal.php';
     </div>
 
     <!-- Administrator Panel -->
-    <div class="card text-white bg-dark mb-3">
-      <h5 class="card-header">Administrator Settings</h5>
-      <div class="card-body">
-        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#usercreate">
-          Create User
-        </button>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#usermodify">
-          Modify User
-        </button>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#userdelete">
-          Delete User
-        </button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#editor">
-          Connect Editor
-        </button>
+    <?php if($group == 1 || $group == 2) {?>
+      <div class="card text-white bg-dark mb-3">
+        <h5 class="card-header">Administrator Settings</h5>
+        <div class="card-body">
+          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#usercreate">
+            Create User
+          </button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#usermodify">
+            Modify User
+          </button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#userdelete">
+            Delete User
+          </button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#editor">
+            Connect Editor
+          </button>
+        </div>
       </div>
-    </div>
+    <?php } ?>
 
   </div>
 
@@ -246,7 +248,7 @@ include '../php/create_modal.php';
               }
               if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()){
-                  echo '<a href="#" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
+                  echo '<a href="" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
                 }
               } else {
                 $view = 'error';
@@ -281,26 +283,26 @@ include '../php/create_modal.php';
           <div class="user-list">
             <div class="list-group">
               <?php
-                try {
-                  $query = "SELECT username FROM tbl_users";
-                  $stmt = $mysqli->prepare($query);
-                  $stmt->execute();
-                  $result=$stmt->get_result();
-                } catch(Exeption $e) {
-                  error_log($e->getMessage());
-                  $view = 'error';
+              try {
+                $query = "SELECT username FROM tbl_users";
+                $stmt = $mysqli->prepare($query);
+                $stmt->execute();
+                $result=$stmt->get_result();
+              } catch(Exeption $e) {
+                error_log($e->getMessage());
+                $view = 'error';
+              }
+              if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()){
+                  echo '<a href="" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
                 }
-                if($result->num_rows > 0) {
-                  while($row = $result->fetch_assoc()){
-                    echo '<a href="" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
-                  }
-                } else {
-                  $view = 'error';
-                }
-                $result->free();
+              } else {
+                $view = 'error';
+              }
+              $result->free();
               ?>
             </div>
-          </div>
+          <div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
