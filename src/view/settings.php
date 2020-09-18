@@ -8,6 +8,7 @@ $error = $message = '';
 // include database connection
 include '../php/pw_modal.php';
 include '../php/create_modal.php';
+include '../php/delete_modal.php';
 ?>
 
 <div class="wrapper settings">
@@ -267,50 +268,51 @@ include '../php/create_modal.php';
   </div>
 
   <!-- Modal Delete User -->
-  <div class="modal fade" id="userdelete" tabindex="-1" role="dialog" aria-labelledby="userdeleteTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Delete User</h5>
-        </div>
-        <div class="modal-body">
-          <!-- Modal Content -->
-          <form class="form-inline">
-            <input class="form-control mr-sm-2 col-lg-9" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn btn-dark my-2 my-sm-0 col-lg-2" type="button"><i class="fa fa-search"></i></button>
-          </form>
-          <!-- TODO: create dynamic list, create <li> -->
-          <div class="user-list">
-            <div class="list-group">
-              <?php
-              try {
-                $query = "SELECT username FROM tbl_users";
+  <form method="post">
+    <div class="modal fade" id="userdelete" tabindex="-1" role="dialog" aria-labelledby="userdeleteTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Delete User</h5>
+          </div>
+          <div class="modal-body">
+            <!-- Modal Content -->
+            <!-- TODO: dropdown with all users -->
+            <div class="form-group">
+              <select class="custom-select" name="select_user">
+                <option <?php if($current_user == '') echo 'selected'; ?> disabled>Choose...</option>
+                <!-- Get subject options from database -->
+                <?php
+                $query = "SELECT username FROM tbl_users WHERE username <> ?";
                 $stmt = $mysqli->prepare($query);
+                $stmt->bind_param('s', $username);
                 $stmt->execute();
                 $result=$stmt->get_result();
-              } catch(Exeption $e) {
-                error_log($e->getMessage());
-                $view = 'error';
-              }
-              if($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()){
-                  echo '<a href="" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
+                
+                if($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()){
+                ?>
+                <option <?php if($current_user == $row['username']) echo 'selected'; ?>><?php echo $row['username']?></option>
+                <?php
+                  }
                 }
-              } else {
-                $view = 'error';
-              }
-              $result->free();
-              ?>
+                $result->free();
+                ?>
+              </select>
             </div>
-          <div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            <div class="form-group">
+              <input required type="text" name="confirmation" class="form-control" aria-describedby="confirmation_message" pattern="I <?php echo $username?> agree">
+              <small id="confirmation_message" class="form-text text-muted">To continue deletion, write: I [ your username ] agree</small>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" name="delete_user" class="btn btn-danger">Delete</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- Modal Editor -->
   <div class="modal fade" id="editor" tabindex="-1" role="dialog" aria-labelledby="editorTitle" aria-hidden="true">
