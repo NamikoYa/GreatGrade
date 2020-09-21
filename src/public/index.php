@@ -27,28 +27,25 @@ $firstname = $lastname = $username = $password = $group = $class = '';
 // get data and fill variables
 if(isset($_SESSION['loggedin'])) {
   $username = $_SESSION['username'];
-  try {
-    $query = "SELECT firstname, lastname, username, password, groupID, classID FROM tbl_users WHERE username = ?";
-    $stmt = $mysqli->prepare($query);
-    $stmt->bind_param('s', $username);
-    $stmt->execute();
+  $query = "SELECT firstname, lastname, username, password, groupID, classID FROM tbl_users WHERE username = ?";
+  if(!$stmt = $mysqli->prepare($query)) $view = 'error';
+  if(!$stmt->bind_param('s', $username)) $view = 'error';
+  if(!$stmt->execute()) $view = 'error';
+  if($view != 'error') {
     $result=$stmt->get_result();
-  } catch(Exeption $e) {
-    error_log($e->getMessage());
-    $view = 'error';
-  }
-  if($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()){
-      $firstname = $row['firstname'];
-      $lastname = $row['lastname'];
-      $password = $_SESSION['password'];
-      $group = $row['groupID'];
-      $class = $row['classID'];
+    if($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        $firstname = $row['firstname'];
+        $lastname = $row['lastname'];
+        $password = $_SESSION['password'];
+        $group = $row['groupID'];
+        $class = $row['classID'];
+      }
+    } else {
+      $view = 'error';
     }
-  } else {
-    $view = 'error';
+    $result->free();
   }
-  $result->free();
 } else {
   $view = 'error';
 }
