@@ -2,12 +2,12 @@
 /* TODO: 
 cleanup 
 -> comments english and starting small
--> local variables start with lv_
+-> local variables start with lv_, buttons = btn_
 -> words in classes and variables are seperated with _
 -> remove unnessecary classes, ids etc
 -> get data in model
 -> think about folder structure (php, what belongs into index?)
--> conform php writing (especially $query parts)
+-> conform php writing (especially $query parts -> editor nicest! but not possible for binding.)
 */
 
 // start session
