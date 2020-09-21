@@ -9,6 +9,7 @@ $error = $message = '';
 include '../php/pw_modal.php';
 include '../php/create_modal.php';
 include '../php/delete_modal.php';
+include '../php/editor_modal.php';
 ?>
 
 <div class="wrapper settings">
@@ -279,7 +280,7 @@ include '../php/delete_modal.php';
             <!-- Modal Content -->
             <!-- TODO: dropdown with all users -->
             <div class="form-group">
-              <select class="custom-select" name="select_user">
+              <select required class="custom-select" name="select_user">
                 <option <?php if($current_user == '') echo 'selected'; ?> disabled>Choose...</option>
                 <!-- Get subject options from database -->
                 <?php
@@ -315,26 +316,32 @@ include '../php/delete_modal.php';
   </form>
 
   <!-- Modal Editor -->
-  <div class="modal fade" id="editor" tabindex="-1" role="dialog" aria-labelledby="editorTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Editor</h5>
-        </div>
-        <div class="modal-body">
-          <!-- Modal Content -->
-          <div class="form-group">
-            <input class="form-control" type="text" value="GGUser" readonly>
-            <textarea class="form-control" id="editorField" rows="6" aria-describedby="editorWarning" placeholder="SQL-Statement"></textarea>
-            <small id="editorWarning" class="form-text text-muted">Executing statements has direct impact on the database!</small>
+  <form method="post">
+    <div class="modal fade" id="editor" tabindex="-1" role="dialog" aria-labelledby="editorTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Editor</h5>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Execute</button>
+          <div class="modal-body">
+            <!-- Modal Content -->
+            <div class="form-group">
+              <input class="form-control" type="text" value="GGUser" readonly>
+              <textarea class="form-control" name="editor_text" id="editorField" rows="6" aria-describedby="editorWarning" placeholder="SQL-Statement"></textarea>
+              <small id="editorWarning" class="form-text text-muted">Executing statements has direct impact on the database!</small>
+            </div>
+            <div class="form-group">
+              <input required type="text" name="confirmation2" class="form-control" aria-describedby="confirmation_message2" pattern="I <?php echo $username?> agree">
+              <small id="confirmation_message2" class="form-text text-muted">To continue deletion, write: I [ your username ] agree</small>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" name="btn_editor" class="btn btn-danger">Execute</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 
 </div>
