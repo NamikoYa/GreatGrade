@@ -86,15 +86,12 @@ include '../php/editor_modal.php';
     </div>
 
     <!-- Administrator Panel -->
-    <?php if($group == 1 || $group == 2) {?>
+    <?php if($group == 1) {?>
       <div class="card text-white bg-dark mb-3">
         <h5 class="card-header">Administrator Settings</h5>
         <div class="card-body">
           <button type="button" class="btn btn-light" data-toggle="modal" data-target="#usercreate">
             Create User
-          </button>
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#usermodify">
-            Modify User
           </button>
           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#userdelete">
             Delete User
@@ -142,7 +139,7 @@ include '../php/editor_modal.php';
 
   <!-- Modal User Create -->
   <form method="post">
-    <div class="modal fade" id="usercreate" tabindex="-1" role="dialog" aria-labelledby="usercreateTitle" aria-hidden="true">
+    <div class="modal fade" id ="usercreate" tabindex="-1" role="dialog" aria-labelledby="usercreateTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -221,52 +218,6 @@ include '../php/editor_modal.php';
       </div>
     </div>
   </form>
-
-  <!-- Modal Modify User -->
-  <div class="modal fade" id="usermodify" tabindex="-1" role="dialog" aria-labelledby="usermodifyTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modify User</h5>
-        </div>
-        <div class="modal-body">
-          <!-- Modal Content -->
-          <form class="form-inline">
-            <input class="form-control mr-sm-2 col-lg-9" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn btn-dark my-2 my-sm-0 col-lg-2" type="button"><i class="fa fa-search"></i></button>
-          </form>
-          <!-- TODO: create dynamic list, create <li> -->
-          <div class="user-list">
-            <div class="list-group">
-              <?php
-              try {
-                $query = "SELECT username FROM tbl_users";
-                $stmt = $mysqli->prepare($query);
-                $stmt->execute();
-                $result=$stmt->get_result();
-              } catch(Exeption $e) {
-                error_log($e->getMessage());
-                $view = 'error';
-              }
-              if($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()){
-                  echo '<a href="" class="list-group-item list-group-item-action">' . $row['username'] . '</a>';
-                }
-              } else {
-                $view = 'error';
-              }
-              $result->free();
-              ?>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Modal Delete User -->
   <form method="post">

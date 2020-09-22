@@ -106,4 +106,4 @@ if(isset($_SESSION['loggedin'])) {
 </body>
 </html>
 
-<!-- switch , &, validation in controller -->
+<!-- switch in controller -->

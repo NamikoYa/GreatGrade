@@ -4,7 +4,7 @@ if(isset($_POST['btn_editor'])) {
   $confirmation = $_POST['confirmation2'];
   $entered_query = $_POST['editor_text'];
   if($confirmation != ('I ' . $username . ' agree') || empty($entered_query)) {
-    $error = 'Could not delete user.';
+    $error = 'Query was not able to execute';
   }
   // if no error, execute query
   if(empty($error)) {

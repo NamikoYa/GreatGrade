@@ -10,7 +10,6 @@ SET time_zone = "+00:00";
 -- database
 --
 create database db_greatgrade;
-use db_greatgrade;
 
 --
 -- database user
@@ -18,6 +17,8 @@ use db_greatgrade;
 create user 'GGUser'@'localhost' identified by 'GGPassword';
 grant select, update, insert, delete on db_greatgrade.* TO GGUser@'localhost';
 flush privileges;
+
+use db_greatgrade;
 
 --
 -- table structures
@@ -97,22 +98,22 @@ insert into tbl_subjects values
 (null, 'History', 'humans being silly');
 
 insert into tbl_users values
-(null, 'Sara', 'Roth', 'sara.roth', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 1, null),
-(null, 'Natascha', 'Wernli', 'natascha.wernli', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 1, null),
-(null, 'Daniel', 'Brodbeck', 'daniel.brodbeck', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 1, null),
-(null, 'Patty', 'Furniture', 'patty.furniture', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
-(null, 'Toi', 'Story', 'toi.story', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
-(null, 'Skye', 'Blue', 'skye.blue', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
-(null, 'Ester', 'La Vista', 'ester.lavista', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 2, null),
-(null, 'Cesar', 'Salad', 'cesar.salad', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 1),
-(null, 'Peet', 'Zaa', 'peet.zaa', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 1),
-(null, 'Fran', 'Tick', 'fran.tick', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 1),
-(null, 'Tess', 'Tickles', 'tess.tickles', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 2),
-(null, 'Chris P.', 'Bacon', 'chrisp.bacon', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 2),
-(null, 'Dustin', 'Trailblazer', 'dustin.trailblazer', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 2),
-(null, 'Donald', 'Duck', 'donald.duck', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 3),
-(null, 'Mickey', 'Mouse', 'mickey.mouse', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 3),
-(null, 'Uri', 'Nalisis', 'uri.nalisis', '$2y$10$CDGvKdQ/aeuvBr2WT7unb.I6ILyHTzL34GTKqS.wt4GwEz4WBeEYG', 3, 3);
+(null, 'Sara', 'Roth', 'sara.roth', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 1, null),
+(null, 'Natascha', 'Wernli', 'natascha.wernli', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 1, null),
+(null, 'Daniel', 'Brodbeck', 'daniel.brodbeck', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 1, null),
+(null, 'Patty', 'Furniture', 'patty.furniture', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 2, null),
+(null, 'Toi', 'Story', 'toi.story', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 2, null),
+(null, 'Skye', 'Blue', 'skye.blue', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 2, null),
+(null, 'Ester', 'La Vista', 'ester.lavista', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 2, null),
+(null, 'Cesar', 'Salad', 'cesar.salad', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 1),
+(null, 'Peet', 'Zaa', 'peet.zaa', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 1),
+(null, 'Fran', 'Tick', 'fran.tick', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 1),
+(null, 'Tess', 'Tickles', 'tess.tickles', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 2),
+(null, 'Chris P.', 'Bacon', 'chrisp.bacon', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 2),
+(null, 'Dustin', 'Trailblazer', 'dustin.trailblazer', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 2),
+(null, 'Donald', 'Duck', 'donald.duck', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 3),
+(null, 'Mickey', 'Mouse', 'mickey.mouse', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 3),
+(null, 'Uri', 'Nalisis', 'uri.nalisis', '$2y$10$xCcIXRUq5UEgamd/cbTNieOQdduk93vAETE.FvW5/BGvrVW5fozGe', 3, 3);
 
 insert into tbl_lessons values
 (null, 1, 48, 4, 1),

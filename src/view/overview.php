@@ -4,10 +4,13 @@ $subject = '';
 
 // change of select option
 if(isset($_POST['btn_view'])) {
-  $subject = $_POST['subjectValue'];
-}
+  if (isset($_POST['subjectValue'])){
+    $subject = $_POST['subjectValue'];
+  }else $subject = '';
+  }
+
 // TODO: edit buttons -> make work
-// TODO: select differen -> ask brodbeck
+// TODO: press view subjec throws error -> ask brodbeck
 ?>
 
 <div class="wrapper overview">
@@ -85,7 +88,7 @@ if(isset($_POST['btn_view'])) {
                   echo '<td>' . $row['grade'] . '</td>';
                   // TODO: clean up
                   if($group == 1 || $group == 2) {
-                    echo '<td style="width: 80px;"><button id="edit" style="padding-top: 2px; height: 25px; font-size: 10pt;" type="button" class="btn btn-light">Edit</button></td>';
+                    echo '<td style="width: 80px;"><button style="padding-top: 2px; height: 25px; font-size: 10pt;" type="button" class="edit">Edit</button></td>';
                   }
                   echo '</tr>';
                   $count++;
