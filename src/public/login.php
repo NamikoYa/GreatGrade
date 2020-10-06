@@ -115,6 +115,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "<div class=\"alert alert-danger\" role=\"alert\">" . $error . "</div>";
         }
         ?>
+        <div class="user_login">
+
             <div class="d-flex justify-content-center">
                 <img src="../../img/GreatGrade.png" class="d-inline-block align-top" alt="GreatGrade" width="220"
                     height="220">
@@ -139,9 +141,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                             maxlength="255"
                             required="true">
                     </div>
+                    <?php
+                    // print error or message
+                    if(!empty($message)){
+                        echo "<div class=\"alert alert-success\" role=\"alert\">" . $message . "</div>";
+                    } else if(!empty($error)){
+                        echo "<div class=\"alert alert-danger\" role=\"alert\">" . $error . "</div>";
+                    }
+                    ?>
                     <div class="d-flex justify-content-center mt-3 login_container">
-                        <button type="submit" name="button" value="submit"
-                            class="btn btn-outline-dark btn-lg">Login</button>
+                        <button type="submit" name="button" value="submit" class="btn btn-outline-dark btn-lg">Login</button>
                     </div>
                 </form>
             </div>
