@@ -10,7 +10,6 @@ if(isset($_POST['btn_view'])) {
   }
 
 // TODO: edit buttons -> make work
-// TODO: press view subjec throws error -> ask brodbeck
 ?>
 
 <div class="wrapper overview">
@@ -88,7 +87,7 @@ if(isset($_POST['btn_view'])) {
                   echo '<td>' . $row['grade'] . '</td>';
                   // TODO: clean up
                   if($group == 1 || $group == 2) {
-                    echo '<td style="width: 80px;"><button style="padding-top: 2px; height: 25px; font-size: 10pt;" type="button" class="edit">Edit</button></td>';
+                    echo '<td style="width: 80px;"><button type="button" class="btn_edit" data-toggle="modal" data-target="#edit">Edit</button></td>';
                   }
                   echo '</tr>';
                   $count++;
@@ -103,5 +102,31 @@ if(isset($_POST['btn_view'])) {
     </div>
 
   </div>
+
+    <!-- Modal Editor -->
+    <form method="post">
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit Grade</h5>
+          </div>
+          <div class="modal-body">
+            <!-- Modal Content -->
+            <div class="form-group">
+              <input class="form-control" type="text" value="GG-Grades" readonly>
+              <input type="text" name="grade" id="grade" class="form-control input_user" value="" placeholder="edit grade..."
+                            maxlength="3">
+              <small id="editWarning" class="form-text text-muted"></small>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" name="btn_save" id="btn_save" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 
 </div>
