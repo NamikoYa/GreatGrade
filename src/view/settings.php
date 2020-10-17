@@ -143,6 +143,14 @@ include '../php/editor_modal.php';
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
+            <?php
+            // print error or message
+            if(!empty($message)){
+                echo "<div class=\"alert alert-success\" role=\"alert\">" . $message . "</div>";
+            } else if(!empty($error)){
+                echo "<div class=\"alert alert-danger\" role=\"alert\">" . $error . "</div>";
+            }
+            ?>
             <h5 class="modal-title" id="exampleModalLongTitle">Create User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
