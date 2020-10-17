@@ -8,10 +8,22 @@ if(isset($_POST['create-user'])) {
   $lv_usergroup = $_POST['usergroup'];
   $lv_userclass = $_POST['class'];
   // trim and sanitize
-  $lv_first = trim($lv_firstname);
-  $lv_last = trim($lv_lastname);
+  $lv_first = trim(htmlspecialchars($lv_firstname));
+  if(strlen($lv_firstname) > 40){
+    $error .= 'Please enter a correct firstname.<br />';
+  }
+  $lv_last = trim(htmlspecialchars($lv_lastname));
+  if(strlen($lv_lastname) > 40){
+    $error .= 'Please enter a correct lastname.<br />';
+  }
   $lv_user= trim($lv_username);
+  if(!preg_match('(.*[a-z]\.[a-z].*)', $lv_username)){
+    $error .= 'Please enter a correct username.<br />';
+  }
   $lv_pass= trim($lv_password);
+  if(!preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,255}$/', $lv_password)){
+    $error .= 'Please enter a correct password.<br />';
+  }
   // check if empty
   if(empty($lv_first) || empty($lv_last) || empty($lv_user) || empty($lv_pass) || $lv_usergroup == 'Choose...'|| $lv_userclass == 'Choose...') {
     $error = 'Could not create new user.';

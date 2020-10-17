@@ -152,19 +152,22 @@ include '../php/editor_modal.php';
             <!-- Modal Content -->
             <div class="form-group">
               <label for="firstname">Firstname</label>
-              <input required name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname">
+              <input required name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname" maxlength="40">
             </div>
             <div class="form-group">
               <label for="lastname">Lastname</label>
-              <input required name="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname">
+              <input required name="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname" maxlength="40">
             </div>
             <div class="form-group">
               <label for="user">Username</label>
-              <input required name="username" type="text" class="form-control" id="user" placeholder="Username">
+              <input required name="username" type="text" class="form-control" id="user" placeholder="Username" minlength="8" maxlength="255"
+              pattern="(.*[a-z]\.[a-z]{3,40})">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input required name="password" type="password" class="form-control" id="password" placeholder="Password">
+              <input required name="password" type="password" class="form-control" id="password" placeholder="Password"
+              title="Your password needs to have 8 or more characters including one in uppercase, one number and a special character included and no umlaut."
+              pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
             </div>
             <!-- Select options for user group -->
             <div class="form-group">
