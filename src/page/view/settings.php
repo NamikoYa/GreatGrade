@@ -5,10 +5,10 @@
 $error = $message = '';
 
 // include needed modals
-include './modals/pw_modal.php';
-include './modals/create_modal.php';
-include './modals/delete_modal.php';
-include './modals/editor_modal.php';
+include './view/modals/pw_modal.php';
+include './view/modals/create_modal.php';
+include './view/modals/delete_modal.php';
+include './view/modals/editor_modal.php';
 ?>
 
 <div class="wrapper settings">
