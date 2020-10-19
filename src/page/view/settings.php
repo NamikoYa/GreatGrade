@@ -159,11 +159,15 @@ include './modals/editor_modal.php';
             <!-- modal content -->
             <div class="form-group">
               <label for="firstname">Firstname</label>
-              <input required name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname" maxlength="40">
+              <input required name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname" maxlength="40"
+              title="Please enter a correct firstname."
+              pattern="(.*[A-Z][a-z])">
             </div>
             <div class="form-group">
               <label for="lastname">Lastname</label>
-              <input required name="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname" maxlength="40">
+              <input required name="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname" maxlength="40"
+              title="Please enter a correct lastname."
+              pattern="(.*[A-Z][a-z])">
             </div>
             <div class="form-group">
               <label for="user">Username</label>
@@ -173,8 +177,8 @@ include './modals/editor_modal.php';
             <div class="form-group">
               <label for="password">Password</label>
               <input required name="password" type="password" class="form-control" id="password" placeholder="Password"
-              title="Your password needs to have 8 or more characters including one in uppercase, one number and a special character included and no umlaut."
-              pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+              title="Your password needs to have 8 or more characters including one in uppercase, one number and a special character included."
+              pattern="/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,255}$/">
             </div>
             <!-- select options for user group -->
             <div class="form-group">
