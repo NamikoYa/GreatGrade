@@ -12,7 +12,6 @@ include './view/modals/editor_modal.php';
 ?>
 
 <div class="wrapper settings">
-
   <!-- page content -->
   <div class="center-div">
     <?php
@@ -41,7 +40,7 @@ include './view/modals/editor_modal.php';
             <input type="text" readonly class="form-control-plaintext" id="lastname" value="<?=$lastname?>">
           </div>
         </div>
-        <!-- access Group Info -->
+        <!-- access group info -->
         <fieldset class="form-group">
           <div class="row">
             <legend class="col-form-label col-sm-2 pt-0">Access Group</legend>
@@ -142,14 +141,6 @@ include './view/modals/editor_modal.php';
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <?php
-            // print error or message
-            if(!empty($message)){
-                echo "<div class=\"alert alert-success\" role=\"alert\">" . $message . "</div>";
-            } else if(!empty($error)){
-                echo "<div class=\"alert alert-danger\" role=\"alert\">" . $error . "</div>";
-            }
-            ?>
             <h5 class="modal-title" id="exampleModalLongTitle">Create User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -159,11 +150,15 @@ include './view/modals/editor_modal.php';
             <!-- modal content -->
             <div class="form-group">
               <label for="firstname">Firstname</label>
-              <input required name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname" maxlength="40">
+              <input required name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname" maxlength="40"
+              title="Please enter a correct firstname."
+              pattern="(.*[A-Z][a-z])">
             </div>
             <div class="form-group">
               <label for="lastname">Lastname</label>
-              <input required name="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname" maxlength="40">
+              <input required name="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname" maxlength="40"
+              title="Please enter a correct lastname."
+              pattern="(.*[A-Z][a-z])">
             </div>
             <div class="form-group">
               <label for="user">Username</label>
@@ -173,7 +168,7 @@ include './view/modals/editor_modal.php';
             <div class="form-group">
               <label for="password">Password</label>
               <input required name="password" type="password" class="form-control" id="password" placeholder="Password"
-              title="Your password needs to have 8 or more characters including one in uppercase, one number and a special character included and no umlaut."
+              title="Your password needs to have 8 or more characters including one in uppercase, one number and a special character included and no umlaut"
               pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
             </div>
             <!-- select options for user group -->
@@ -183,16 +178,20 @@ include './view/modals/editor_modal.php';
                 <option selected disabled>Choose...</option>
                 <!-- get user group options from database -->
                 <?php
+                // create query
                 $query = "SELECT * FROM tbl_usergroups";
-                $stmt = $mysqli->prepare($query);
-                $stmt->execute();
-                $result=$stmt->get_result();
-                
+                // prepare()
+                if(!$stmt = $mysqli->prepare($query)) $error = 'Could not identify users. Please try again.';
+                // execute()
+                if(!$stmt->execute()) $error = 'Could not identify users. Please try again.';
+                // get results
+                if(!$result=$stmt->get_result()) $error = 'Could not identify users. Please try again.';
+                // cycle and output results
                 if($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()){
                     echo '<option>' . $row['ID'] . '</option>';
                   }
-                }
+                } else $error = 'Could not identify users. Please try again.';
                 $result->free();
                 ?>
               </select>
@@ -205,16 +204,20 @@ include './view/modals/editor_modal.php';
                 <option>None</option>
                 <!-- get class options from database -->
                 <?php
+                // create query
                 $query = "SELECT * FROM tbl_classes";
-                $stmt = $mysqli->prepare($query);
-                $stmt->execute();
-                $result=$stmt->get_result();
-                
+                // prepare()
+                if(!$stmt = $mysqli->prepare($query)) $error = 'Could not identify classes. Please try again.';
+                // execute()
+                if(!$stmt->execute()) $error = 'Could not identify classes. Please try again.';
+                // get results
+                if(!$result=$stmt->get_result()) $error = 'Could not identify classes. Please try again.';
+                // cycle and output results
                 if($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()){
                     echo '<option>' . $row['ID'] . '</option>';
                   }
-                }
+                } else $error = 'Could not identify classes. Please try again.';
                 $result->free();
                 ?>
               </select>
@@ -244,19 +247,24 @@ include './view/modals/editor_modal.php';
                 <option <?php if($current_user == '') echo 'selected'; ?> disabled>Choose...</option>
                 <!-- get usernames from database -->
                 <?php
+                // create query
                 $query = "SELECT username FROM tbl_users WHERE username <> ?";
-                $stmt = $mysqli->prepare($query);
-                $stmt->bind_param('s', $username);
-                $stmt->execute();
-                $result=$stmt->get_result();
-                
+                // prepare()
+                if(!$stmt = $mysqli->prepare($query)) $error = 'Could not identify users. Please try again.';
+                // bind_param()
+                if(!$stmt->bind_param('s', $username)) $error = 'Could not identify users. Please try again.';
+                // execute()
+                if(!$stmt->execute()) $error = 'Could not identify users. Please try again.';
+                // get results
+                if(!$result=$stmt->get_result()) $error = 'Could not identify users. Please try again.';
+                //cycle and output results
                 if($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()){
                 ?>
                 <option <?php if($current_user == $row['username']) echo 'selected'; ?>><?php echo $row['username']?></option>
                 <?php
                   }
-                }
+                } else $error = 'Could not identify users. Please try again.';
                 $result->free();
                 ?>
               </select>
