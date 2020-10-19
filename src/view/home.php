@@ -1,9 +1,9 @@
 <?php?>
 
 <div class="wrapper home">
-  <!-- Page Content -->
+  <!-- page Content -->
   <div class="center-div">
-    <!-- Welcome -->
+    <!-- welcome -->
     <div class="jumbotron">
       <h1 class="display-4">Welcome <?=$firstname?> <?=$lastname?>!</h1>
       <p class="lead">This is a simple application for administering and viewing grades and content.</p>
@@ -15,7 +15,7 @@
       </p>
     </div>
 
-    <!-- Guide -->
+    <!-- guide -->
     <div class="jumbotron">
       <h3>New here?</h3>
       <p class="lead">

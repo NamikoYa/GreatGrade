@@ -1,5 +1,4 @@
 <?php
-// TODO: Make modals work
 // TODO: Cannot make changes with modals twice immediately, must reload?
 
 // initialize variables
@@ -14,7 +13,7 @@ include '../php/editor_modal.php';
 
 <div class="wrapper settings">
 
-  <!-- Page Content -->
+  <!-- page content -->
   <div class="center-div">
     <?php
       // print error or message
@@ -25,12 +24,12 @@ include '../php/editor_modal.php';
       }
     ?>
 
-    <!-- Profile Panel -->
+    <!-- profile panel -->
     <div class="card text-white bg-dark mb-3">
       <h5 class="card-header">Profile</h5>
       <div class="card-body">
         <div class="form-group row">
-          <!-- User Info -->
+          <!-- user info -->
           <label for="firstname" class="col-sm-2 col-form-label">Firstname:</label>
           <div class="col-sm-10">
             <input type="text" readonly class="form-control-plaintext" id="firstname" value="<?=$firstname?>">
@@ -42,7 +41,7 @@ include '../php/editor_modal.php';
             <input type="text" readonly class="form-control-plaintext" id="lastname" value="<?=$lastname?>">
           </div>
         </div>
-        <!-- Access Group Info -->
+        <!-- access Group Info -->
         <fieldset class="form-group">
           <div class="row">
             <legend class="col-form-label col-sm-2 pt-0">Access Group</legend>
@@ -68,7 +67,7 @@ include '../php/editor_modal.php';
             </div>
           </div>
         </fieldset>
-        <!-- Account Info -->
+        <!-- account Info -->
         <div class="form-group">
           <label for="profileusername">Username</label>
           <input disabled type="text" class="form-control" id="profileusername" value="<?=$username?>">
@@ -85,7 +84,7 @@ include '../php/editor_modal.php';
       </div>
     </div>
 
-    <!-- Administrator Panel -->
+    <!-- administrator panel -->
     <?php if($group == 1) {?>
       <div class="card text-white bg-dark mb-3">
         <h5 class="card-header">Administrator Settings</h5>
@@ -105,7 +104,7 @@ include '../php/editor_modal.php';
 
   </div>
 
-  <!-- Modal Change Password -->
+  <!-- modal change password -->
   <form method="post">
     <div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="changepasswordTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -117,7 +116,7 @@ include '../php/editor_modal.php';
             </button>
           </div>
           <div class="modal-body">
-            <!-- Modal Content -->
+            <!-- modal content -->
             <div class="form-group">
               <label for="password">Password</label>
               <input required type="password" name="new1" class="form-control" id="password" aria-describedby="changeWarning" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
@@ -137,7 +136,7 @@ include '../php/editor_modal.php';
     </div>
   </form>
 
-  <!-- Modal User Create -->
+  <!-- modal user creation -->
   <form method="post">
     <div class="modal fade" id ="usercreate" tabindex="-1" role="dialog" aria-labelledby="usercreateTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -157,7 +156,7 @@ include '../php/editor_modal.php';
             </button>
           </div>
           <div class="modal-body">
-            <!-- Modal Content -->
+            <!-- modal content -->
             <div class="form-group">
               <label for="firstname">Firstname</label>
               <input required name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname" maxlength="40">
@@ -177,12 +176,12 @@ include '../php/editor_modal.php';
               title="Your password needs to have 8 or more characters including one in uppercase, one number and a special character included and no umlaut."
               pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
             </div>
-            <!-- Select options for user group -->
+            <!-- select options for user group -->
             <div class="form-group">
               <label class="mr-sm-2" for="inlineFormCustomSelect">User Group</label>
               <select required name="usergroup" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                 <option selected disabled>Choose...</option>
-                <!-- Get user group options from database -->
+                <!-- get user group options from database -->
                 <?php
                 $query = "SELECT * FROM tbl_usergroups";
                 $stmt = $mysqli->prepare($query);
@@ -198,13 +197,13 @@ include '../php/editor_modal.php';
                 ?>
               </select>
             </div>
-            <!-- Select options for class -->
+            <!-- select options for class -->
             <div class="form-group">
               <label class="mr-sm-2" for="inlineFormCustomSelect">Class</label>
               <select required name="class" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                 <option selected disabled>Choose...</option>
                 <option>None</option>
-                <!-- Get class options from database -->
+                <!-- get class options from database -->
                 <?php
                 $query = "SELECT * FROM tbl_classes";
                 $stmt = $mysqli->prepare($query);
@@ -230,7 +229,7 @@ include '../php/editor_modal.php';
     </div>
   </form>
 
-  <!-- Modal Delete User -->
+  <!-- modal delete user -->
   <form method="post">
     <div class="modal fade" id="userdelete" tabindex="-1" role="dialog" aria-labelledby="userdeleteTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -239,12 +238,11 @@ include '../php/editor_modal.php';
             <h5 class="modal-title" id="exampleModalLongTitle">Delete User</h5>
           </div>
           <div class="modal-body">
-            <!-- Modal Content -->
-            <!-- TODO: dropdown with all users -->
+            <!-- modal content -->
             <div class="form-group">
               <select required class="custom-select" name="select_user">
                 <option <?php if($current_user == '') echo 'selected'; ?> disabled>Choose...</option>
-                <!-- Get subject options from database -->
+                <!-- get usernames from database -->
                 <?php
                 $query = "SELECT username FROM tbl_users WHERE username <> ?";
                 $stmt = $mysqli->prepare($query);
@@ -277,7 +275,7 @@ include '../php/editor_modal.php';
     </div>
   </form>
 
-  <!-- Modal Editor -->
+  <!-- modal editor -->
   <form method="post">
     <div class="modal fade" id="editor" tabindex="-1" role="dialog" aria-labelledby="editorTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -286,7 +284,7 @@ include '../php/editor_modal.php';
             <h5 class="modal-title" id="exampleModalLongTitle">Editor</h5>
           </div>
           <div class="modal-body">
-            <!-- Modal Content -->
+            <!-- modal content -->
             <div class="form-group">
               <input class="form-control" type="text" value="GGUser" readonly>
               <textarea class="form-control" name="editor_text" id="editorField" rows="6" aria-describedby="editorWarning" placeholder="SQL-Statement"></textarea>
