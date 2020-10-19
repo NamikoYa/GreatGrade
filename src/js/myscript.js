@@ -1,11 +1,14 @@
+// when document ready
 $(document).ready(function() {
-  $(".btn_edit").click(function() {
-
-    // only works for first line? Why?
-    $(this).parents("tr").find("td:nth-child(2)").each(function(){
-      let first = this.innerText;
-      let last = this.nextSibling.innerText;
-			console.log(first, " ", last);
-		});
+  // click event, toggles editability of table
+  $('#btn_edit_id').click(function() {
+    if($('#btn_edit_id').text() == 'Edit List') {
+      $('.grade_td').attr('contenteditable', 'true');
+      $('#btn_edit_id').text('Save List');
+    } else {
+      $('.grade_td').attr('contenteditable', 'false');
+      $('#btn_edit_id').text('Edit List');
+      $('#form_table').submit();
+    }
   });
 });

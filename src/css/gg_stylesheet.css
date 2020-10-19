@@ -60,10 +60,19 @@ body, html {
 .icon_border {
   border-top-left-radius: 12px;
 }
+
 .btn_edit{
+  float: right;
   padding: 2px 10px;
-  height: 25px;
-  font-size: 10pt;
+  height: 35px;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.btn_edit:hover {
+  background-color: rgb(224, 224, 224);
+  transform: scale(1.1);
+  transition: .25s;
 }
