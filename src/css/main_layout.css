@@ -67,11 +67,12 @@ body, html {
   height: 35px;
   border: none;
   border-radius: 6px;
+  outline: none;
   cursor: pointer;
   transition: .25s;
 }
 
-.btn_edit:hover {
+.btn_edit:hover:enabled {
   background-color: rgb(224, 224, 224);
   transform: scale(1.1);
   transition: .25s;

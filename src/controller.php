@@ -6,6 +6,7 @@
 // include database connection
 include '../db_connector.php';
 
+// change of views
 $view = isset($_GET['view']) ? $_GET['view'] : '';
 
 ?>

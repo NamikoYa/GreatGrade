@@ -4,8 +4,10 @@ $pattern = '/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#
 
 // change password
 if(isset($_POST['change-pass'])) {
+  // assign new data to variables
   $new1 = $_POST['new1'];
   $new2 = $_POST['new2'];
+  // compare
   if($new1 == $new2) {
     // trim and sanitize
     $newPass = trim($new1);
@@ -18,19 +20,19 @@ if(isset($_POST['change-pass'])) {
   }
   // if no error, save new password in database
   if(empty($error)) {
-    try {
-      $query = 'UPDATE tbl_users SET password = ? WHERE username = ?';
-      $stmt = $mysqli->prepare($query);
-      $hashedPass = password_hash($newPass, PASSWORD_DEFAULT);
-      $stmt->bind_param('ss', $hashedPass, $username);
-      $stmt->execute();
-    } catch(Exeption $e) {
-      error_log($e->getMessage());
-      $error = 'Could not change password.';
-    }
+    // create query
+    $query = 'UPDATE tbl_users SET password = ? WHERE username = ?';
+    // prepare()
+    if(!$stmt = $mysqli->prepare($query)) $error = 'Could not change password.';
+    // hash password
+    $hashedPass = password_hash($newPass, PASSWORD_DEFAULT);
+    // bind_param()
+    if(!$stmt->bind_param('ss', $hashedPass, $username)) $error = 'Could not change password.';
+    // execute()
+    if(!$stmt->execute()) $error = 'Could not change password.';
+    // no error
     if (empty($error)) {
       $message =  'Password successfully changed.';
-      // TODO: Is this secure?
       $_SESSION['password'] = $newPass;
       $password = $newPass;
       $mysqli->close();
