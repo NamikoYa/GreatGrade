@@ -4,11 +4,11 @@
 // initialize variables
 $error = $message = '';
 
-// include database connection
-include '../php/pw_modal.php';
-include '../php/create_modal.php';
-include '../php/delete_modal.php';
-include '../php/editor_modal.php';
+// include needed modals
+include './modals/pw_modal.php';
+include './modals/create_modal.php';
+include './modals/delete_modal.php';
+include './modals/editor_modal.php';
 ?>
 
 <div class="wrapper settings">

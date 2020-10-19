@@ -1,7 +1,6 @@
 <?php
 /* TODO: 
-cleanup 
--> comments english and starting small
+cleanup
 -> local variables start with lv_, buttons = btn_
 -> words in classes and variables are seperated with _
 -> remove unnessecary classes, ids etc
@@ -19,8 +18,6 @@ ini_set('display_errors', true);
 
 // include controller
 include '../controller.php';
-// include database connection
-include '../db_connector.php';
 
 // initialize variables
 $firstname = $lastname = $username = $password = $group = $class = '';
@@ -62,7 +59,7 @@ if(isset($_SESSION['loggedin'])) {
   <!-- icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- stylesheets -->
-  <link rel="stylesheet" type="text/css" href="../css/gg_stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="../css/main_layout.css">
 
   <title>GreatGrade</title>
 </head>
@@ -86,13 +83,13 @@ if(isset($_SESSION['loggedin'])) {
   // display view according view-parameter
   switch ($view) {
     case 'home':
-      include '../view/home.php'; break;
+      include './view/home.php'; break;
     case 'overview':
-      include '../view/overview.php'; break;
+      include './view/overview.php'; break;
     case 'settings':
-      include '../view/settings.php'; break;
+      include './view/settings.php'; break;
     default:
-      include '../view/error.php'; break;
+      include './view/error.php'; break;
   }
   ?>
 
@@ -100,7 +97,7 @@ if(isset($_SESSION['loggedin'])) {
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="../js/myscript.js"></script>
+  <script src="../js/eventHandler.js"></script>
 
 </body>
 

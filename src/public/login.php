@@ -3,8 +3,8 @@
 // start session
 session_start();
 if(isset($_SESSION['loggedin'])) {
-    session_unset();
-    session_destroy();
+  session_unset();
+  session_destroy();
 }
 
 // include database connection
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['password'] = $password;
         session_regenerate_id(true);
         // change location to index
-        header("Location: ./index.php?view=home");
+        header("Location: ../page/index.php?view=home");
       }else{
         $error .= "Password or username is incorrect."; // throw error message
       }
@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <!-- stylesheets -->
-    <link rel="stylesheet" type="text/css" href="../css/gg_stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../css/main_layout.css">
 
     <title>GreatGrade</title>
 </head>
@@ -137,7 +137,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="../js/myscript.js"></script>
 
 </body>
 
