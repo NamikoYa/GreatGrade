@@ -2,7 +2,6 @@
 
 Administering grades of students
 
-
 ## Setup
 
 The first step to get started with GreatGrade is to create the respective database.
