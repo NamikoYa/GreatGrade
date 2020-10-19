@@ -169,7 +169,7 @@ include './view/modals/editor_modal.php';
               <label for="password">Password</label>
               <input required name="password" type="password" class="form-control" id="password" placeholder="Password"
               title="Your password needs to have 8 or more characters including one in uppercase, one number and a special character included"
-              pattern="/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,255}$/">
+              pattern="(?=^.{8,255}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
             </div>
             <!-- select options for user group -->
             <div class="form-group">
