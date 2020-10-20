@@ -9,7 +9,7 @@ if(isset($_POST['btn_save_grade'])) {
 	$current_user = $_POST['select_table_user'];
 	$data_grade = $_POST['grade'];
 	// sanitize
-	$grade = trim(htmlspecialchars($lv_firstname));
+	$grade = trim(htmlspecialchars($data_grade));
 	if(!preg_match('(.*[1-6]{1}\.[0-9]{1,2})', $grade)) $error = 'Could not update grade.';
 	if(empty($error)) {
 		// create query
