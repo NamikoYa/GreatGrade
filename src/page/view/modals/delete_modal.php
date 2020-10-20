@@ -15,8 +15,12 @@ if(isset($_POST['delete_user'])) {
   if(empty($error)) {
     // create query
     $query = 'DELETE FROM tbl_users WHERE username = ?';
-    // execute query
-    if(!$mysqli -> query($query)) $error = 'Could not delete user';
+    // prepare()
+    if(!$stmt = $mysqli->prepare($query)) $error = 'Could not delete user.';
+    // bind_param()
+    if(!$stmt->bind_param('s', $current_user)) $error = 'Could not delete user.';
+    // execute
+    if(!$stmt->execute()) $error = 'Could not delete user.';
     // no error
     if (empty($error)) {
       $message =  "User successfully deleted.";
